@@ -113,16 +113,16 @@ class FieldTest {
 
 		String value = "/[MSG]/PATIENT/PATIENT_VISIT/PV1-3";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type[] pid4Fields = outgoingTerser.getSegment("/PATIENT/PID").getField(4);
 		assertEquals("244288437^^^NIF^PT", pid4Fields[0].encode());
 		assertEquals("11931489544^^^N_BENEF", pid4Fields[1].encode());
 		assertEquals("12586669^^^N_BI", pid4Fields[2].encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("3^^^NIF^PT", pid4Fields[0].encode());
 		assertEquals("3^^^N_BENEF", pid4Fields[1].encode());
 		assertEquals("3^^^N_BI", pid4Fields[2].encode());
@@ -153,16 +153,16 @@ class FieldTest {
 
 		String value = "/[TMP]/PATIENT/PATIENT_VISIT/PV1-3";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type[] pid4Fields = outgoingTerser.getSegment("/PATIENT/PID").getField(4);
 		assertEquals("244288437^^^NIF^PT", pid4Fields[0].encode());
 		assertEquals("11931489544^^^N_BENEF", pid4Fields[1].encode());
 		assertEquals("12586669^^^N_BI", pid4Fields[2].encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("404^^^NIF^PT", pid4Fields[0].encode());
 		assertEquals("404^^^N_BENEF", pid4Fields[1].encode());
 		assertEquals("404^^^N_BI", pid4Fields[2].encode());
@@ -193,13 +193,13 @@ class FieldTest {
 
 		String value = "/[MSG]/PATIENT/PID-3-1";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		assertEquals("244288437", outgoingTerser.get("/PATIENT/PID-4-1"));
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("JMS43417401", outgoingTerser.get("/PATIENT/PID-4-1"));
 	}
 
@@ -228,13 +228,13 @@ class FieldTest {
 
 		String value = "/[TMP]/PATIENT/PID-3-1";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		assertEquals("244288437", outgoingTerser.get("/PATIENT/PID-4-1"));
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("NEW_VALUE", outgoingTerser.get("/PATIENT/PID-4-1"));
 	}
 
@@ -263,16 +263,16 @@ class FieldTest {
 
 		String value = "/[MSG]/PATIENT/PID-3-1";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type[] pid4Fields = outgoingTerser.getSegment("/PATIENT/PID").getField(4);
 		assertEquals("244288437^^^NIF^PT", pid4Fields[0].encode());
 		assertEquals("11931489544^^^N_BENEF", pid4Fields[1].encode());
 		assertEquals("12586669^^^N_BI", pid4Fields[2].encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("244288437^^^JMS43417401^PT", pid4Fields[0].encode());
 		assertEquals("11931489544^^^JMS43417401", pid4Fields[1].encode());
 		assertEquals("12586669^^^JMS43417401", pid4Fields[2].encode());
@@ -303,16 +303,16 @@ class FieldTest {
 
 		String value = "/[TMP]/PATIENT/PID-3-1";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type[] pid4Fields = outgoingTerser.getSegment("/PATIENT/PID").getField(4);
 		assertEquals("244288437^^^NIF^PT", pid4Fields[0].encode());
 		assertEquals("11931489544^^^N_BENEF", pid4Fields[1].encode());
 		assertEquals("12586669^^^N_BI", pid4Fields[2].encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("244288437^^^NEW_VALUE^PT", pid4Fields[0].encode());
 		assertEquals("11931489544^^^NEW_VALUE", pid4Fields[1].encode());
 		assertEquals("12586669^^^NEW_VALUE", pid4Fields[2].encode());
@@ -343,14 +343,14 @@ class FieldTest {
 
 		String value = "/[MSG]/ORDER/ORDER_DETAIL/OBR-46-1";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type pid4Field = outgoingTerser.getSegment("/PATIENT/PID").getField(4, 0);
 		assertEquals("244288437^^^NIF^PT", pid4Field.encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("20201108^20201108^20201108^20201108^20201108^20201108^20201108^20201108", pid4Field.encode());
 	}
 
@@ -379,14 +379,14 @@ class FieldTest {
 
 		String value = "/[TMP]/ORDER/ORDER_DETAIL/OBR-46-1";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type pid4Field = outgoingTerser.getSegment("/PATIENT/PID").getField(4, 0);
 		assertEquals("244288437^^^NIF^PT", pid4Field.encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("1234^1234^1234^1234^1234^1234^1234^1234", pid4Field.encode());
 	}
 
@@ -415,15 +415,15 @@ class FieldTest {
 
 		String value = "/[MSG]/ORDER/ORDER_DETAIL/OBR-32-1-2";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type obr32Field = outgoingTerser.getSegment("/ORDER/ORDER_DETAIL/OBR").getField(32, 0);
 
 		assertEquals("123440432&NEW_VALUE&JOSE", obr32Field.encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("REBELO&NEW_VALUE&JOSE", obr32Field.encode());
 	}
 
@@ -452,15 +452,15 @@ class FieldTest {
 
 		String value = "/[TMP]/ORDER/ORDER_DETAIL/OBR-32-1-2";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type obr32Field = outgoingTerser.getSegment("/ORDER/ORDER_DETAIL/OBR").getField(32, 0);
 
 		assertEquals("123440432&NEW_VALUE&JOSE", obr32Field.encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("NEW_VALUE&NEW_VALUE&JOSE", obr32Field.encode());
 	}
 
@@ -489,7 +489,7 @@ class FieldTest {
 
 		String value = "/[MSG]/ORDER/ORDER_DETAIL/OBR-32-1-2";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type[] pid4Fields = outgoingTerser.getSegment("/PATIENT/PID").getField(4);
 
@@ -497,9 +497,9 @@ class FieldTest {
 		assertEquals("11931489544^^^N_BENEF&2", pid4Fields[1].encode());
 		assertEquals("12586669^^^N_BI&3", pid4Fields[2].encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("244288437^^^NIF&REBELO^PT", pid4Fields[0].encode());
 		assertEquals("11931489544^^^N_BENEF&REBELO", pid4Fields[1].encode());
 		assertEquals("12586669^^^N_BI&REBELO", pid4Fields[2].encode());
@@ -530,7 +530,7 @@ class FieldTest {
 
 		String value = "/[TMP]/ORDER/ORDER_DETAIL/OBR-32-1-2";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type[] pid4Fields = outgoingTerser.getSegment("/PATIENT/PID").getField(4);
 
@@ -538,9 +538,9 @@ class FieldTest {
 		assertEquals("11931489544^^^N_BENEF&2", pid4Fields[1].encode());
 		assertEquals("12586669^^^N_BI&3", pid4Fields[2].encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("244288437^^^NIF&NEW_VALUE^PT", pid4Fields[0].encode());
 		assertEquals("11931489544^^^N_BENEF&NEW_VALUE", pid4Fields[1].encode());
 		assertEquals("12586669^^^N_BI&NEW_VALUE", pid4Fields[2].encode());
@@ -571,15 +571,15 @@ class FieldTest {
 
 		String value = "/[MSG]/ORDER/ORDER_DETAIL/OBR-32-1-2";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type obr32Field = outgoingTerser.getSegment("/ORDER/ORDER_DETAIL/OBR").getField(32, 0);
 
 		assertEquals("123440432&NEW_VALUE&JOSE", obr32Field.encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("REBELO&REBELO&REBELO&REBELO&REBELO&REBELO&REBELO&REBELO&REBELO&REBELO&REBELO", obr32Field.encode());
 	}
 
@@ -608,15 +608,15 @@ class FieldTest {
 
 		String value = "/[TMP]/ORDER/ORDER_DETAIL/OBR-32-1-2";
 
-		AbstractOperation operation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
+		AbstractOperation fieldOperation = new Field(meng, incomingMessage, outgoingMessage, incomingTerser, outgoingTerser, keys, value);
 
 		Type obr32Field = outgoingTerser.getSegment("/ORDER/ORDER_DETAIL/OBR").getField(32, 0);
 
 		assertEquals("123440432&NEW_VALUE&JOSE", obr32Field.encode());
 
-		operation.map();
+		fieldOperation.map();
 
-		assertTrue(operation.errors.isEmpty());
+		assertTrue(fieldOperation.errors.isEmpty());
 		assertEquals("NEW_VALUE&NEW_VALUE&NEW_VALUE&NEW_VALUE&NEW_VALUE&NEW_VALUE&NEW_VALUE&NEW_VALUE&NEW_VALUE&NEW_VALUE&NEW_VALUE", obr32Field.encode());
 	}
 }
